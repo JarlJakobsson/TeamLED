@@ -14,6 +14,7 @@ services:
     volumes:
       - ./nginx/html:/usr/share/nginx/html
       - ./nginx/config:/etc/nginx/
+      - ./nginx/www:/var/www/teamled/
     ports:
       - "9080:80"
     #restart: unless-stopped
