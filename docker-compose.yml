@@ -11,8 +11,12 @@ services:
 
   nginx-server:
     image: nginx
+    volumes:
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/config:/etc/nginx/
     ports:
-      - "80:80"
+      - "9080:80"
+    #restart: unless-stopped
     # Other configurations for Nginx
 
   mysql-db:
