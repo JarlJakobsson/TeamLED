@@ -1,24 +1,24 @@
+# Going to work with this during the weekend and try to implement stuff we want from the upcoming PDF-file.
+# Please upload any code to Github before friday ends <3.
+
 version: "3"
 services:
   python-app:
-    image: python:3.11
+    image: python:latest
     volumes:
       - ./app:/app
     command:
       - "python"
       - "/app/app.py"
-    # Other configurations for your Python app
 
   nginx-server:
-    image: nginx
+    image: nginx:latest
     volumes:
       - ./nginx/html:/usr/share/nginx/html
       - ./nginx/config:/etc/nginx/
       - ./nginx/www:/var/www/teamled/
     ports:
       - "9080:80"
-    #restart: unless-stopped
-    # Other configurations for Nginx
 
   mysql-db:
     image: mysql:latest
@@ -27,4 +27,18 @@ services:
       MYSQL_DATABASE: your_database
       MYSQL_USER: your_user
       MYSQL_PASSWORD: your_password
-    # Other configurations for MySQL
+
+  wordpress:
+    image: wordpress:latest
+    volumes:
+      - ./wordpress:/var/www/html
+    ports:
+      - "8000:80"
+
+#  backup:
+#    image: # Add Docker image name here.
+#    volumes:
+#      - ./backup:/backup
+#    depends_on: # Add services that this service depends on (have to start before backup container so backup get latest files).
+#      - mysql-db
+#      - wordpress
