@@ -1,0 +1,25 @@
+version: "3"
+services:
+  python-app:
+    image: python:3.11
+    volumes:
+      - ./app:/app
+    command:
+      - "python"
+      - "/app/app.py"
+    # Other configurations for your Python app
+
+  nginx-server:
+    image: nginx
+    ports:
+      - "80:80"
+    # Other configurations for Nginx
+
+  mysql-db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: your_database
+      MYSQL_USER: your_user
+      MYSQL_PASSWORD: your_password
+    # Other configurations for MySQL
