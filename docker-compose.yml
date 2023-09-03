@@ -1,15 +1,12 @@
-# Going to work with this during the weekend and try to implement stuff we want from the upcoming PDF-file.
-# Please upload any code to Github before friday ends <3.
-
 version: "3"
 services:
-  python-app:
-    image: python:latest
-    volumes:
-      - ./app:/app
-    command:
-      - "python"
-      - "/app/app.py"
+  # python-app:
+  #  image: python:latest
+  #  volumes:
+  #    - ./app:/app
+  #  command:
+  #    - "python"
+  #    - "/app/app.py"
 
   nginx-server:
     image: nginx:latest
@@ -27,13 +24,23 @@ services:
       MYSQL_DATABASE: your_database
       MYSQL_USER: your_user
       MYSQL_PASSWORD: your_password
+    volumes:
+      - ./mysql:/var/lib/mysql
 
   wordpress:
     image: wordpress:latest
+    environment:
+      WORDPRESS_DB_HOST: mysql-db
+      WORDPRESS_DB_USER: your_user
+      WORDPRESS_DB_PASSWORD: your_password
+      WORDPRESS_DB_NAME: your_database
+
     volumes:
       - ./wordpress:/var/www/html
     ports:
       - "8000:80"
+    depends_on:
+      - mysql-db
 
 #  backup:
 #    image: # Add Docker image name here.

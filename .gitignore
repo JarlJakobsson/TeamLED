@@ -1,5 +1,6 @@
 nginx/www/
 Wordpress/
+mysql/
 
 # Logs
 logs
