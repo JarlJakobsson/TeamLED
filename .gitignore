@@ -1,4 +1,6 @@
+#Custom ignores
 nginx/www/
+*.gz
 
 # Logs
 logs
