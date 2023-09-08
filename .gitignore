@@ -1,5 +1,6 @@
 #Custom ignores
-nginx/www/
+/html/wordpress/*
+!/html/wordpress/wp-content/
 *.gz
 
 # Logs
