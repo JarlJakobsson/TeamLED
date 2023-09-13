@@ -21,9 +21,6 @@ cp /var/log/mysql/error.log /tmp/backups/logs/mysql
 # Compress the logs
 tar -czvf "logbackups_($time).tar.gz" /tmp/backups/
 
-# Move the file to backup site
-# put code here
-
 # WordPress  html backup
 mkdir /tmp/backups/wordpress
 cp -r /var/www/html /tmp/backups/wordpress
